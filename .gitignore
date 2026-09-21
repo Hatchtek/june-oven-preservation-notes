@@ -1,0 +1,9 @@
+# never commit these
+*.key
+*.pem
+paired*.json
+*.log
+frames.jsonl
+june-archive/
+secrets.local.json
+uc.key
