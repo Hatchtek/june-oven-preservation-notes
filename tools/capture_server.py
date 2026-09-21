@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generic TLS capture server — answers the cert-pinning question.
+"""Generic TLS capture server - answers the cert-pinning question.
 
 Listens on :443, presents whatever cert.pem/key.pem you provide, and logs for
 every connection: the client IP, the SNI it asked for, and whether the TLS

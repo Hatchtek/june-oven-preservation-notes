@@ -1,4 +1,4 @@
-# June Oven — Post-Shutdown Preservation Notes
+# June Oven - Post-Shutdown Preservation Notes
 
 Independent research notes and diagnostic tools from investigating how to keep a
 **June Oven (3rd-gen)** useful after Weber's connected-services shutdown
@@ -7,7 +7,7 @@ Independent research notes and diagnostic tools from investigating how to keep a
 > **Disclaimer:** Unofficial. Not affiliated with, endorsed by, or connected to
 > June Life, Inc. or Weber Inc. "June" is used only to identify the hardware this
 > concerns. Everything here is for interoperability with hardware you own and for
-> educational purposes. No warranty. Commands can act on a real appliance — test
+> educational purposes. No warranty. Commands can act on a real appliance - test
 > carefully. Nothing here contains June/Weber copyrighted content or any
 > credentials.
 
@@ -20,11 +20,11 @@ Independent research notes and diagnostic tools from investigating how to keep a
   programs run on the device, not in the app or (at cook time) the cloud. The
   phone app ships no ML model.
 - **What dies:** phone remote control, live camera-to-phone, time-lapses, in-app
-  recipe browsing, OTA updates — all cloud-routed.
+  recipe browsing, OTA updates - all cloud-routed.
 - **A LAN replacement server is blocked by TLS certificate pinning.** The oven
   connects to your DNS-redirected server but rejects any cert it can't verify
   against June's pinned key (`certificate_unknown` alert). Confirmed from the
-  oven side via packet capture — new data not previously public.
+  oven side via packet capture - new data not previously public.
 - **Cutting the cloud does not expose a local control port.** Even fully offline,
   the oven opens no local listener; it just retries the cloud.
 
@@ -50,9 +50,9 @@ IP addresses at the top of each before use.
 This builds on and cross-checks the existing community projects, which are the
 place to start if you want working (cloud-era) control:
 
-- `keithah/homebridge-june-oven` — the reverse-engineered protocol + pairing spec
-- `jclima/ha-june-oven` — Home Assistant integration
-- `deftdawg/june` — catalog preservation crawler
+- `keithah/homebridge-june-oven` - the reverse-engineered protocol + pairing spec
+- `jclima/ha-june-oven` - Home Assistant integration
+- `deftdawg/june` - catalog preservation crawler
 
 The genuinely new contribution here is the **oven-side** behavior under a
 redirected/blocked cloud (cert pinning confirmed, no local fallback), gathered by

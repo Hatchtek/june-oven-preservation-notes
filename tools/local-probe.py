@@ -30,7 +30,7 @@ while not done:
     s = try_open()
     if not s:
         time.sleep(0.2); continue
-    log("PORT 54890 OPEN — fingerprinting")
+    log("PORT 54890 OPEN - fingerprinting")
     # 1) server-first banner
     try:
         s.settimeout(2)
@@ -72,5 +72,5 @@ while not done:
         except Exception: pass
     if done:
         open("/home/blake/Projects/June-Fix/local-probe.done", "w").write("caught")
-        log("=== fingerprint captured — see log ===")
+        log("=== fingerprint captured - see log ===")
     time.sleep(0.2)

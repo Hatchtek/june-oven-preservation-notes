@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Passively listen to mDNS (multicast 224.0.0.251:5353) and log every packet
-that involves the oven (10.13.0.161) — both what it ADVERTISES and, crucially,
+that involves the oven (10.13.0.161) - both what it ADVERTISES and, crucially,
 what service types it QUERIES/BROWSES for. That reveals whether the oven waits
 to be connected to, or hunts for a local companion to connect out to.
 No root needed (just joins the multicast group).

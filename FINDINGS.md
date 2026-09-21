@@ -1,4 +1,4 @@
-# June Oven (Gen 3) — post-shutdown findings
+# June Oven (Gen 3) - post-shutdown findings
 
 Written 2026-09-20, from static analysis of the official June Android app
 `com.junelife.companion` v1.24.1.11 (signed by June, cert SHA-256
@@ -26,7 +26,7 @@ Weber's connected-services shutdown: **2026-09-22**.
 | Phone remote control (preheat/temp/cancel) | Cloud WebSocket relay `messaging.junelife.com` | No |
 | Live camera view on phone | Cloud WS video frames (msg `10011`, `VideoFrame`, `signed_url`) | No |
 | In-app recipe/collection browsing | Cloud REST `recipes.junelife.com`, `/1/recipes`, `/1/collections`, `/1/presets/catalog` | No |
-| Pairing a new companion | Cloud (`api.junelife.com`) — already broken | No |
+| Pairing a new companion | Cloud (`api.junelife.com`) - already broken | No |
 | Firmware / OTA | Cloud | No |
 
 ## Protocol facts (verified against the app, correcting the public spec)
@@ -36,7 +36,7 @@ is **correct**. Confirmed from June's own code:
 
 - **Architecture:** oven opens an outbound WSS to `messaging.junelife.com` and
   verifies each command's **Ed25519 signature itself** against the key trusted at
-  pairing. The cloud **never signs** — it only relays. (Implication: a LAN
+  pairing. The cloud **never signs** - it only relays. (Implication: a LAN
   replacement server needs to relay transport, not impersonate June's authority.)
 - **Pairing SRP-6a:** RFC-5054 **8192-bit** group, generator **g=19**, hash
   **SHA-1**, identity `"user"`, 16-byte salt. (`rb/i.java`, `qj/b.java` group `f22293g`.)
@@ -84,7 +84,7 @@ Pushes (oven→companion): `10013` telemetry, `10018` device-state, `10020` ack,
 `10014/10015/10016/10017` cook-plan, `10011` camera frame, `10026` pairing key,
 `10027` pairing-session-invalidated, `10022` unpaired.
 
-## LAN cert-pinning test — RESULT (2026-09-20, novel; nobody had tested oven-side)
+## LAN cert-pinning test - RESULT (2026-09-20, novel; nobody had tested oven-side)
 
 Setup: UniFi DHCP DNS pointed at a box running dnsmasq (redirects
 `*.junelife.com` → the box) + a TLS capture server on :443 with a self-signed
@@ -102,7 +102,7 @@ Observed, oven `10.13.0.161`:
   **validates the server certificate** (CA-validation and/or pinning; alert 46
   leans toward a pin/trust check rather than a plain `unknown_ca`).
 
-**Conclusion:** a plain DNS-redirect + self-signed cert does **not** work — the
+**Conclusion:** a plain DNS-redirect + self-signed cert does **not** work - the
 oven will not talk to a server it can't verify. Standing up a LAN replacement
 server therefore requires either a cert the oven already trusts (we don't have
 the private key; can't get a public CA cert for a domain we don't own) or
